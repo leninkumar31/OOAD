@@ -11,7 +11,7 @@ public class Inventory {
 	}
 	
 	public void addGuitar(String serialNumber, Double price, Builder builder, Type type, String model) {
-		guitarList.add(new Guitar(serialNumber, price, builder, type, model));
+		guitarList.add(new Guitar(serialNumber, price, new GuitarSpecifications(builder, type, model)));
 	}
 	
 	public Guitar getGuitar(String serialNumber) {
@@ -23,17 +23,17 @@ public class Inventory {
 		return null;
 	}
 	
-	public List<Guitar> search(Guitar guitar) {
+	public List<Guitar> search(GuitarSpecifications customerSpecs) {
 		List<Guitar> matchList = new ArrayList<>();
 		for(int i=0;i<guitarList.size();i++) {
-			Builder builder = guitar.getBuilder();
-			if(builder!=null && !builder.equals("")&& builder != guitarList.get(i).getBuilder())
+			Builder builder = customerSpecs.getBuilder();
+			if(builder!=null && !builder.equals("")&& builder != guitarList.get(i).getSpecs().getBuilder())
 				continue;
-			String model = guitar.getModel();
-			if(model!=null && !model.equals("")&&!model.toLowerCase().equals(guitarList.get(i).getModel().toLowerCase()))
+			String model = customerSpecs.getModel();
+			if(model!=null && !model.equals("")&&!model.toLowerCase().equals(guitarList.get(i).getSpecs().getModel().toLowerCase()))
 				continue;
-			Type type = guitar.getType();
-			if(type!=null && !type.equals("")&&type != guitarList.get(i).getType())
+			Type type = customerSpecs.getType();
+			if(type!=null && !type.equals("")&&type != guitarList.get(i).getSpecs().getType())
 				continue;
 			matchList.add(guitarList.get(i));
 		}

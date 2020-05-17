@@ -7,8 +7,8 @@ public class FindGuitarTester {
 	public static void main(String[] args) {
 		Inventory inventory = new Inventory();
 		initializeInventory(inventory);
-		Guitar customerChoice = constructCustomerChoice();
-		List<Guitar> matchList = inventory.search(customerChoice);
+		GuitarSpecifications customerSpecs = constructCustomerChoice();
+		List<Guitar> matchList = inventory.search(customerSpecs);
 		if (matchList.size() != 0) {
 			System.out.println("You might like this: " + matchList);
 		} else {
@@ -20,9 +20,9 @@ public class FindGuitarTester {
 		// logic to fill the inventory
 	}
 
-	public static Guitar constructCustomerChoice() {
+	public static GuitarSpecifications constructCustomerChoice() {
 		// construct guitar object based on customer input
-		return new Guitar("", 100.0, Builder.ANY, Type.ACOUSTIC, "model");
+		return new GuitarSpecifications(Builder.ANY, Type.ACOUSTIC, "model");
 	}
 
 }

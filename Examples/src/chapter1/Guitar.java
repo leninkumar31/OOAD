@@ -3,16 +3,12 @@ package chapter1;
 public class Guitar {
 	private String serialNumber;
 	private Double price;
-	private Builder builder;
-	private Type type;
-	private String model;
+	private GuitarSpecifications specs;
 	
-	public Guitar(String serialNumber, Double price, Builder builder, Type type, String model){
+	public Guitar(String serialNumber, Double price, GuitarSpecifications specs){
 		this.serialNumber = serialNumber;
 		this.price = price;
-		this.builder = builder;
-		this.type = type;
-		this.model = model;
+		this.specs = specs;
 	}
 	
 	public String getSerialNumber() {
@@ -27,15 +23,7 @@ public class Guitar {
 		this.price = price;
 	}
 	
-	public Builder getBuilder() {
-		return builder;
-	}
-	
-	public Type getType() {
-		return type;
-	}
-	
-	public String getModel() {
-		return model;
+	public GuitarSpecifications getSpecs() {
+		return specs;
 	}
 }
