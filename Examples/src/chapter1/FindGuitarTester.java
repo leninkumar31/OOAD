@@ -22,7 +22,7 @@ public class FindGuitarTester {
 
 	public static GuitarSpecifications constructCustomerChoice() {
 		// construct guitar object based on customer input
-		return new GuitarSpecifications(Builder.ANY, Type.ACOUSTIC, "model");
+		return new GuitarSpecifications(Builder.ANY, Type.ACOUSTIC, "model",12);
 	}
 
 }
