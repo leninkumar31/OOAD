@@ -36,8 +36,8 @@ public class GuitarSpecifications {
 		if (o == this)
 			return true;
 		GuitarSpecifications other = (GuitarSpecifications) o;
-		return (this.builder == other.builder) && (this.type == other.type) 
-				&& (this.numStrings == other.numStrings)
-				&& ((this.model!=null)&&(!this.model.equals(""))&&this.model.toLowerCase().equals(other.getModel().toLowerCase()));
+		return (this.builder == other.builder) && (this.type == other.type) && (this.numStrings == other.numStrings)
+				&& ((this.model != null) && (!this.model.equals(""))
+						&& this.model.toLowerCase().equals(other.getModel().toLowerCase()));
 	}
 }
