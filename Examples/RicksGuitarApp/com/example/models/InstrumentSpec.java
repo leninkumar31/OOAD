@@ -1,41 +1,40 @@
 package com.example.models;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import com.example.enums.Builder;
 import com.example.enums.Type;
 
-public abstract class InstrumentSpec {
-	private Builder builder;
-	private Type type;
-	private String model;
+public class InstrumentSpec {
+	private Map<String, Object> properties;
 
-	public InstrumentSpec(Builder builder, Type type, String model) {
-		this.builder = builder;
-		this.type = type;
-		this.model = model;
+	public InstrumentSpec(Map<String, Object> map) {
+		if (map == null) {
+			this.properties = new HashMap<>();
+		} else {
+			this.properties = new HashMap<>(map);
+		}
 	}
 
-	public Builder getBuilder() {
-		return builder;
+	public Object getProperty(String key) {
+		if (properties.containsKey(key)) {
+			return properties.get(key);
+		}
+		return null;
 	}
 
-	public Type getType() {
-		return type;
+	public Map<String, Object> getProperties() {
+		return properties;
 	}
 
-	public String getModel() {
-		return model;
-	}
-	
-	public abstract boolean matches(InstrumentSpec spec);
-
-	@Override
-	public boolean equals(Object o) {
-		if (!(o instanceof InstrumentSpec))
-			return false;
-		if (o == this)
-			return true;
-		InstrumentSpec other = (InstrumentSpec) o;
-		return (this.builder == other.builder) && (this.type == other.type) && ((this.model != null)
-				&& (!this.model.equals("")) && this.model.toLowerCase().equals(other.getModel().toLowerCase()));
+	public boolean matches(InstrumentSpec otherSpec) {
+		Map<String, Object> otherProperties = otherSpec.getProperties();
+		for (String key : otherProperties.keySet()) {
+			if (!properties.containsKey(key) || properties.get(key).equals(otherProperties.get(key))) {
+				return false;
+			}
+		}
+		return true;
 	}
 }
