@@ -7,5 +7,6 @@
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="RicksGuitarApp"/>
+	<classpathentry kind="src" path="GameFramework"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
